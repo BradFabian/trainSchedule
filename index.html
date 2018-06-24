@@ -12,9 +12,65 @@
   crossorigin="anonymous"></script>
   <script src="main.js"></script>
 
-    <title></title>
+    <title>Train Schedule</title>
 </head>
 <body>
+    <div class = "container">
+            <div class="jumbotron jumbotron-fluid bg-dark text-white text-center">
+                    <div class="container">
+                      <h1 class="display-4">Train Times</h1>
+                      <p class="lead"></p>
+                    </div>
+                  </div>
+                  <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Train Name</th>
+                            <th scope="col">Destination</th>
+                            <th scope="col">Frequency</th>
+                            <th scope="col">Next Arrival</th>
+                            <th scope="col">Minutes Away</th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <!-- Generate Rows-->
+                        </tbody>
+                      </table>
+
+
+    
+    
+    </div>
+    <div class = "container">
+            <form>
+                    <form>  
+                            <div class="form-group">
+                                    <label for="name">Train Name</label>
+                                    <input type="name" class="form-control" id="trainNameInput"  placeholder="Name">
+                                    
+                                  </div>
+                            <div class="form-group">
+                                    <label for="destination">Destination</label>
+                                    <input type="name" class="form-control" id="destinationInput"  placeholder="Destination">
+                                    
+                                  </div>
+                            <div class="form-group">
+                              <label for="minutes">First Train Time</label>
+                              <input type="time" class="form-control" id="minuteInput"  placeholder="First Train">
+                              
+                            </div>
+                            <div class="form-group">
+                              <label for="arrivalTime">Frequency</label>
+                              <input type="number" class="form-control" id="arrivalTimeInput" placeholder="Minutes">
+                            </div>
+                           
+                            
+                            <button type="submit" id="btn" class="btn btn-primary">Submit</button>
+                          </form>
+
+
+    </div>
 
 
     
