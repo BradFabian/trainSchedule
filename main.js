@@ -40,32 +40,31 @@ $(document).ready(function() {
 
   });
 
-  database.ref().on("child_added", function(snapshot) {
+  database.ref().on("child_added", function(childSnapshot) {
 
     // Log everything that's coming out of snapshot
-    console.log(snapshot.val());
-    console.log(snapshot.val().name);
-    console.log(snapshot.val().destination);
-    console.log(snapshot.val().firstTrain);
-    console.log(snapshot.val().trainFrequency);
+    console.log(childSnapshot.val());
+    console.log(childSnapshot.val().name);
+    console.log(childSnapshot.val().destination);
+    console.log(childSnapshot.val().firstTrain);
+    console.log(childSnapshot.val().trainFrequency);
 
     // Change the HTML to reflect
-    $("#name-display").text(snapshot.val().name);
-    $("#destination-display").text(snapshot.val().destination);
-    $("#train-display").text(snapshot.val().firstTrain);
-    $("#freq-display").text(snapshot.val().trainFrequency);
+    $("#name-display").text(childSnapshot.val().name);
+    $("#destination-display").text(childSnapshot.val().destination);
+    $("#train-display").text(childSnapshot.val().firstTrain);
+    $("#freq-display").text(childSnapshot.val().trainFrequency);
 
-    // Handle the errors
-  }); 
-
-   
-   var submitButton = $('button')
+    
+    var submitButton = $('button')
 
     $(function() {
     submitButton.on('click', function() {
     
 // Create and save a reference to new empty table row
+var tbody = $("tbody")
 var tr = $("<tr>");
+
 // Create and save references to 3 td elements containing the Title, Year, and Actors from the AJAX response object
 var trainNamedisplay = '<td id= "name-display">' + name + '</td>';
 var destinationdisplay = '<td id= "destination-display">'+ destination + '</td>' ;
@@ -85,5 +84,9 @@ tbody.append(tr)
 
 });
     })
+  }); 
+
+   
+  
     
 });
