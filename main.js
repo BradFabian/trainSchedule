@@ -41,6 +41,8 @@ $(document).ready(function() {
     
   });
 
+  
+
     // Clears all of the text-boxes
     $("#trainNameInput").val("");
     $("#destinationInput").val("");
@@ -50,24 +52,7 @@ $(document).ready(function() {
     
 
   });
-
-  database.ref().on("child_added", function(childSnapshot) {
-
-    // Log everything that's coming out of snapshot
-    console.log(childSnapshot.val());
-    console.log(childSnapshot.val().name);
-    console.log(childSnapshot.val().destination);
-    console.log(childSnapshot.val().firstTrain);
-    console.log(childSnapshot.val().trainFrequency);
-
-    // Change the HTML to reflect
-    $("#name-display").text(childSnapshot.val().name);
-    $("#destination-display").text(childSnapshot.val().destination);
-    $("#train-display").text(childSnapshot.val().firstTrain);
-    $("#freq-display").text(childSnapshot.val().trainFrequency);
-
-    
-    var submitButton = $('button')
+  var submitButton = $('button')
 
     $(function() {
     submitButton.on('click', function() {
@@ -94,8 +79,27 @@ tr.append(frequencydisplay);
 tbody.append(tr)
 
 });
+database.ref().on("child_added", function(childSnapshot) {
+
+  // Log everything that's coming out of snapshot
+  console.log(childSnapshot.val());
+  console.log(childSnapshot.val().name);
+  console.log(childSnapshot.val().destination);
+  console.log(childSnapshot.val().firstTrain);
+  console.log(childSnapshot.val().trainFrequency);
+
+  // Change the HTML to reflect
+  $("#name-display").text(childSnapshot.val().name);
+  $("#destination-display").text(childSnapshot.val().destination);
+  $("#train-display").text(childSnapshot.val().firstTrain);
+  $("#freq-display").text(childSnapshot.val().trainFrequency);
+
+  
+  
+}); 
     })
-  }); 
+
+ 
 
    
   
