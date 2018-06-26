@@ -3,3 +3,7 @@ body {
     background-size: cover;
     background-attachment: fixed;
  }
+
+ .jumbotron {
+     margin-top: 20px;
+ }
