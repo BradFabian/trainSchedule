@@ -31,12 +31,23 @@ $(document).ready(function() {
     trainFrequency = $("#arrivalTimeInput").val().trim();
 
     // Code for "Setting values in the database"
-    database.ref().set({
+    database.ref().push({
       name: name,
       destination: destination,
       firstTrain: firstTrain,
       trainFrequency: trainFrequency
-    });
+
+    
+    
+  });
+
+    // Clears all of the text-boxes
+    $("#trainNameInput").val("");
+    $("#destinationInput").val("");
+    $("#minuteInput").val("");
+    $("#arrivalTimeInput").val("");
+  
+    
 
   });
 
