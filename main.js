@@ -18,7 +18,7 @@ $(document).ready(function() {
   var name = "";
   var destination = "";
   var firstTrain = "";
-  var trainFrequency = "";
+  var trainFrequency = 0;
 
   // Capture Button Click
   $("#btn").on("click", function(event) {
@@ -36,12 +36,7 @@ $(document).ready(function() {
       destination: destination,
       firstTrain: firstTrain,
       trainFrequency: trainFrequency
-
-    
-    
-  });
-
-  
+    });
 
     // Clears all of the text-boxes
     $("#trainNameInput").val("");
@@ -49,55 +44,55 @@ $(document).ready(function() {
     $("#minuteInput").val("");
     $("#arrivalTimeInput").val("");
   
-    
+
+    return false;
 
   });
-  var submitButton = $('button')
+  
 
-    $(function() {
-    submitButton.on('click', function() {
     
-// Create and save a reference to new empty table row
-var tbody = $("tbody")
-var tr = $("<tr>");
-
-// Create and save references to 3 td elements containing the Title, Year, and Actors from the AJAX response object
-var trainNamedisplay = '<td id= "name-display">' + name + '</td>';
-var destinationdisplay = '<td id= "destination-display">'+ destination + '</td>' ;
-var firstTraindisplay = '<td id= "train-display">' + firstTrain + '</td>' ;
-var frequencydisplay = '<td id= "freq-display" >' + trainFrequency + '</td>' ;
+    
 
 
-
-// Append the td elements to the new table row
-tr.append(trainNamedisplay);
-tr.append(destinationdisplay);
-tr.append(firstTraindisplay);
-tr.append(frequencydisplay);
-
-// Append the table row to the tbody element
-tbody.append(tr)
-
-});
 database.ref().on("child_added", function(childSnapshot) {
-
-  // Log everything that's coming out of snapshot
   console.log(childSnapshot.val());
-  console.log(childSnapshot.val().name);
-  console.log(childSnapshot.val().destination);
-  console.log(childSnapshot.val().firstTrain);
-  console.log(childSnapshot.val().trainFrequency);
 
-  // Change the HTML to reflect
-  $("#name-display").text(childSnapshot.val().name);
-  $("#destination-display").text(childSnapshot.val().destination);
-  $("#train-display").text(childSnapshot.val().firstTrain);
-  $("#freq-display").text(childSnapshot.val().trainFrequency);
+   // update the variable with data from the database
+   name = childSnapshot.val().name;
+   destination = childSnapshot.val().destination;
+   firstTrain = childSnapshot.val().firstTrain;
+   trainFrequency = childSnapshot.val().trainFrequency;
+ // moment formula 
+ var firstTrainMoment = moment(firstTrain, 'HH:mm');
+    var nowMoment = moment(); 
 
+    var minutesSinceFirstArrival = nowMoment.diff(firstTrainMoment, 'minutes');
+    var minutesSinceLastArrival = minutesSinceFirstArrival % trainFrequency;
+    var minutesAway = trainFrequency - minutesSinceLastArrival;
+
+    var nextArrival = nowMoment.add(minutesAway, 'minutes');
+    var formatNextArrival = nextArrival.format("HH:mm");
+//add table
+var tr = $('<tr>');
+    var a = $('<td>');
+    var b = $('<td>');
+    var c = $('<td>');
+    var d = $('<td>');
+    var e = $('<td>');
+    a.append(name);
+    b.append(destination);
+    c.append(trainFrequency);
+    d.append(formatNextArrival);
+    e.append(minutesAway);
+    tr.append(a).append(b).append(c).append(d).append(e);
+    $('#newTrains').append(tr);
   
   
-}); 
-    })
+}),
+function (errorObject) {
+  console.log("The read failed:" + errorObject.code);
+}
+    
 
  
 

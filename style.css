@@ -2,6 +2,6 @@ body {
     
     background-image: url("Images/trainStation.jpg");
     background: no-repeat;
-    background-size: 100%;
+    background-size: cover;
     background-attachment: fixed;
 }
