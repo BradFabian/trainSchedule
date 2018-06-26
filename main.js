@@ -15,14 +15,21 @@ $(document).ready(function() {
 
   // Inital Values
 
-  var name = "";
+  /*var name = "";
   var destination = "";
   var firstTrain = "";
-  var trainFrequency = 0;
+  var trainFrequency = 0;*/
 
   // Capture Button Click
   $("#btn").on("click", function(event) {
     event.preventDefault();
+
+    // Inital Values
+
+  var name = "";
+  var destination = "";
+  var firstTrain = "";
+  var trainFrequency = 0;
 
     // Grabbed values from text-boxes
     name = $("#trainNameInput").val().trim();
