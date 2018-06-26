@@ -1,7 +1,5 @@
 body {
-    
-    background-image: url("Images/trainStation.jpg");
-    background: no-repeat;
+    background: url("./Images/trainStation.jpg");
     background-size: cover;
     background-attachment: fixed;
-}
+ }
